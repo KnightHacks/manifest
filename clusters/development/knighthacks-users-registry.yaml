@@ -2,7 +2,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: knighthacks-users-dev
+  name: knighthacks-users
   namespace: flux-system
 spec:
   image: ghcr.io/knighthacks/knighthacks_users
@@ -11,7 +11,7 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: knighthacks-users-dev-policy
+  name: knighthacks-users
   namespace: flux-system
 spec:
   imageRepositoryRef:
