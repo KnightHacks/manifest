@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knighthacks-users
+  labels:
+    app.kubernetes.io/version: ""
+    app: knighthacks_users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: knighthacks_users
+  template:
+    metadata:
+      labels:
+        app: knighthacks_users
+    spec:
+      containers:
+        - name: knighthacks-users
+          image: ghcr.io/knighthacks/knighthacks_users:0.0.3 # {"$imagepolicy": "flux-system:knighthacks-users"}
+          ports:
+            - containerPort: 80
