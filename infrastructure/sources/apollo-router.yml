@@ -1,13 +1,13 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: apollo-router
+  name: apollorouter
   namespace: flux-system
 spec:
-  interval: 10m
-  url: git@github.com:apollographql/router.git
+  interval: 1m0s
   ref:
     branch: main
+  url: ssh://git@github.com/KnightHacks/router
   ignore: |
     # exclude all
     /*
