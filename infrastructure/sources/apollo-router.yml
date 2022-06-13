@@ -1,0 +1,15 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: apollo-router
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: git@github.com:apollographql/router.git
+  ref:
+    branch: main
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/helm/chart/router
