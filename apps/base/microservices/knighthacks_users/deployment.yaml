@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: knighthacks-users
-  namespace: ""
   labels:
     app.kubernetes.io/version: ""#  {"$imagepolicy": "flux-system:knighthacks-users:tag"}
     app: knighthacks_users
