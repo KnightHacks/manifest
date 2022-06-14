@@ -18,7 +18,8 @@ spec:
     name: knighthacks-users
   filterTags:
     ## use "pattern: '[a-f0-9]+-(?P<ts>[0-9]+)'" if you copied the workflow example using github.run_number
-    pattern: '^development-[a-f0-9]+-(?P<ts>[0-9]+)'
+    # TODO: change to development
+    pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
     extract: '$ts'
   policy:
     numerical:
