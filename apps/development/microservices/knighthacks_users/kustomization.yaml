@@ -7,9 +7,3 @@ images:
   - name: ghcr.io/knighthacks/knighthacks_users
     newName: ghcr.io/knighthacks/knighthacks_users # {"$imagepolicy": "flux-system:podinfo:name"}
     newTag: 0.0.3 # {"$imagepolicy": "flux-system:podinfo:tag"}
-configMapGenerator:
-  - name: knighthacks-users-values
-    envs:
-      - values.env
-configurations:
-  - kustomizeconfig.yaml

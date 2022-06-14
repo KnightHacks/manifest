@@ -22,5 +22,11 @@ spec:
           ports:
             - containerPort: 80
           envFrom:
-            - configMapRef:
-                name: knighthacks-users-values
+            - secretRef:
+                name: database
+            - secretRef:
+                name: oauth
+            - secretRef:
+                name: jwt
+            - secretRef:
+                name: login-encryption
