@@ -1,0 +1,9 @@
+global:
+  postgresql:
+    auth:
+      username: knighthacks
+      password: test
+      database: knighthacks
+primary:
+  initdb:
+    scriptsConfigMap: initdb-scripts
