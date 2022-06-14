@@ -11,3 +11,5 @@ configMapGenerator:
   - name: initdb-scripts
     files:
       - init.sql=init.sql
+configurations:
+  - kustomizeconfig.yaml

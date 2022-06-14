@@ -1,0 +1,6 @@
+nameReference:
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - path: spec/template/spec/containers[0]/envFrom[0]/configMapRef/name
+        kind: Deployment

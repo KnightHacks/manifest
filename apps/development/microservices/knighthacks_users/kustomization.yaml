@@ -11,3 +11,5 @@ configMapGenerator:
   - name: knighthacks-users-values
     envs:
       - values.env
+configurations:
+  - kustomizeconfig.yaml
