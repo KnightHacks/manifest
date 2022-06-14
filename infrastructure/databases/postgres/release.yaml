@@ -18,4 +18,7 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: postgres-values
-
+  values:
+    primary:
+      initdb:
+        scriptsConfigMap: initdb-scripts
