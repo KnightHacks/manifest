@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: postgres
 resources:
   - ./namespace.yaml
+  - ./release.yaml
 configMapGenerator:
   - name: postgres-values
     files:
