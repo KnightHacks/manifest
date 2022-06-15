@@ -22,12 +22,6 @@ spec:
   interval: 10m0s
   path: ./clusters/development
   prune: true
-  # Recommended settings
-  # https://fluxcd.io/docs/components/kustomize/kustomization/#recommended-settings
-  wait: true # wait for all applied resources to become ready
-  timeout: 3m0s # give up waiting after three minutes
-  retryInterval: 2m0s # retry every two minutes on apply or waiting failures
-  force: true # recreate resources on immutable fields changes
   sourceRef:
     kind: GitRepository
     name: flux-system
