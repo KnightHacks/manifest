@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: apollorouter
+  namespace: knighthacks-router
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: router
+      version: '>=0.1.9'
+      sourceRef:
+        kind: GitRepository
+        name: apollorouter
+        namespace: flux-system
+      interval: 1m
+  valuesFrom:
+    - kind: ConfigMap
+      name: apollorouter-config
+  values:
+    extraVolumes:
+      - name: supergraph-volume
+        configMap:
+          name: apollosupergraph-config
