@@ -28,7 +28,6 @@ spec:
   timeout: 3m0s # give up waiting after three minutes
   retryInterval: 2m0s # retry every two minutes on apply or waiting failures
   force: true # recreate resources on immutable fields changes
-  targetNamespace: apps # set the namespace for all resources
   sourceRef:
     kind: GitRepository
     name: flux-system
