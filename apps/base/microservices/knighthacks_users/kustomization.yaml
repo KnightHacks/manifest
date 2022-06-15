@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: knighthacks-microservices
 resources:
   - ./deployment.yaml
+  - ./service.yaml
