@@ -9,6 +9,6 @@ configMapGenerator:
       - values.yaml=values.yaml
   - name: apollosupergraph-config
     files:
-      - supergraph.yaml=supergraph.yaml
+      - supergraph.graphqls=supergraph.graphqls
 configurations:
   - kustomizationconfig.yaml

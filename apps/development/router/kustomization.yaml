@@ -7,4 +7,4 @@ configMapGenerator:
   - name: apollosupergraph-config
     behavior: merge
     files:
-      - supergraph.yaml=supergraph.yaml
+      - supergraph.graphqls=supergraph.graphqls
