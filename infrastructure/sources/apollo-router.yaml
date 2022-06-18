@@ -7,7 +7,7 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/apollographql/router
+  url: https://github.com/KnightHacks/router
   ignore: |
     # exclude all
     /*
