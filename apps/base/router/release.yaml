@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: router
+      chart: ./helm/charts/router
       version: '>=0.1.9'
       sourceRef:
         kind: GitRepository
