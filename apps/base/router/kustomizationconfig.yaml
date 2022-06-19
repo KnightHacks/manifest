@@ -4,5 +4,5 @@ nameReference:
     fieldSpecs:
       - path: spec/valuesFrom/name
         kind: HelmRelease
-      - path: spec/values/extraVolumes/configMap/name
+      - path: spec/values/extraVolumes/projected/sources/configMap/name
         kind: HelmRelease

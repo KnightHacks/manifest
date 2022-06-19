@@ -59,9 +59,7 @@ extraEnvVarsSecret: ''
 #    configMap:
 #      name: apollosupergraph-config
 extraVolumeMounts:
-  - name: supergraph-volume
-    mountPath: /etc/apollo
-  - name: rhai-script-volume
+  - name: config-volume
     mountPath: /etc/apollo
 
 serviceAccount:

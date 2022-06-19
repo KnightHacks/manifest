@@ -19,9 +19,10 @@ spec:
       name: apollorouter-config
   values:
     extraVolumes:
-      - name: supergraph-volume
-        configMap:
-          name: apollosupergraph-config
-      - name: rhai-script-volume
-        configMap:
-          name: rhai-script-config
+      - name: config-volume
+        projected:
+          sources:
+            - configMap:
+                name: apollosupergraph-config
+            - configMap: rhai-script-volume
+                name: rhai-script-config
