@@ -16,6 +16,9 @@ router:
       all:
         - propagate:
             named: 'authorization'
+    plugins:
+      experimental.rhai:
+        filename: /etc/config/script.rhai
   args:
     - --hot-reload
 
@@ -57,6 +60,8 @@ extraEnvVarsSecret: ''
 #      name: apollosupergraph-config
 extraVolumeMounts:
   - name: supergraph-volume
+    mountPath: /etc/apollo
+  - name: rhai-script-volume
     mountPath: /etc/apollo
 
 serviceAccount:

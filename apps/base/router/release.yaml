@@ -22,3 +22,6 @@ spec:
       - name: supergraph-volume
         configMap:
           name: apollosupergraph-config
+      - name: rhai-script-volume
+        configMap:
+          name: rhai-script-config
