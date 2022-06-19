@@ -18,7 +18,7 @@ router:
             named: 'authorization'
     plugins:
       experimental.rhai:
-        filename: /etc/config/script.rhai
+        filename: /etc/apollo/script.rhai
   args:
     - --hot-reload
 
