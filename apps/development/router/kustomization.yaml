@@ -8,3 +8,7 @@ configMapGenerator:
     behavior: merge
     files:
       - supergraph.graphqls=supergraph.graphqls
+  - name: rhai-script-config
+    behavior: merge
+    files:
+      - script.rhai=script.rhai

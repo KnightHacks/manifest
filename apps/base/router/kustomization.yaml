@@ -10,5 +10,8 @@ configMapGenerator:
   - name: apollosupergraph-config
     files:
       - supergraph.graphqls=supergraph.graphqls
+  - name: rhai-script-config
+    files:
+      - script.rhai=script.rhai
 configurations:
   - kustomizationconfig.yaml
