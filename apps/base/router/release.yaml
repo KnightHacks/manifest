@@ -23,6 +23,6 @@ spec:
         projected:
           sources:
             - configMap:
-              name: apollosupergraph-config
+                name: apollosupergraph-config
             - configMap: rhai-script-volume
-              name: rhai-script-config
+                name: rhai-script-config
