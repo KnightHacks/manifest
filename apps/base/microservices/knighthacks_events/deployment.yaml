@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: knighthacks-events
-          image: ghcr.io/knighthacks/knighthacks_events:0.0.1 # {"$imagepolicy": "flux-system:knighthacks-events"}
+          image: ghcr.io/knighthacks/knighthacks_events:1.0.0 # {"$imagepolicy": "flux-system:knighthacks-events"}
           ports:
             - containerPort: 80
           envFrom:
