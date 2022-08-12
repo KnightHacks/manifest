@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: knighthacks-microservices
+resources:
+  - ../../../base/microservices/knighthacks_sponsors
+images:
+  - name: ghcr.io/knighthacks/knighthacks_sponsors
+    newName: ghcr.io/knighthacks/knighthacks_sponsors # {"$imagepolicy": "flux-system:knighthacks-sponsors:name"}
+    newTag: 1.0.0 # {"$imagepolicy": "flux-system:knighthacks-sponsors:tag"}

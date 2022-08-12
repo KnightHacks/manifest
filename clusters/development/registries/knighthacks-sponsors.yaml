@@ -1,0 +1,26 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: knighthacks-sponsors
+  namespace: flux-system
+spec:
+  image: ghcr.io/knighthacks/knighthacks_sponsors
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: knighthacks-sponsors
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: knighthacks-sponsors
+  filterTags:
+    ## use "pattern: '[a-f0-9]+-(?P<ts>[0-9]+)'" if you copied the workflow example using github.run_number
+    # TODO: change to development
+    pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc

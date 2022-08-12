@@ -5,4 +5,6 @@ resources:
   - ./router
   - ./microservices/knighthacks_users
   - ./microservices/knighthacks_events
+  - ./microservices/knighthacks_sponsors
+  - ./microservices/knighthacks_hackathon
   - ./microservices/secrets/
