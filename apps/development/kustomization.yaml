@@ -4,4 +4,5 @@ resources:
   - ../base/namespaces
   - ./router
   - ./microservices/knighthacks_users
+  - ./microservices/knighthacks_events
   - ./microservices/secrets/
