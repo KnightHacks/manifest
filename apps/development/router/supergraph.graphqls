@@ -17,6 +17,11 @@ directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
 
 directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
 
+interface Connection {
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
 type Event
   @join__owner(graph: EVENTS)
   @join__type(graph: EVENTS, key: "id")
@@ -31,23 +36,36 @@ type Event
   start_date: Time! @join__field(graph: EVENTS)
 }
 
+type EventsConnection implements Connection {
+  events: [Event!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
 type Hackathon
   @join__owner(graph: HACKATHON)
   @join__type(graph: HACKATHON, key: "id")
   @join__type(graph: HACKATHON, key: "term{year semester}")
 {
-  attendees: [User!]! @join__field(graph: HACKATHON)
-  events: [Event!]! @join__field(graph: HACKATHON)
+  applicants(after: ID, first: Int! = 25): UsersConnection! @join__field(graph: HACKATHON)
+  attendees(after: ID, first: Int! = 25): UsersConnection! @join__field(graph: HACKATHON)
+  attending(userId: ID!): Boolean! @join__field(graph: HACKATHON)
+  endDate: Time! @join__field(graph: HACKATHON)
+  events(after: ID, first: Int! = 25): EventsConnection! @join__field(graph: HACKATHON)
   id: ID! @join__field(graph: HACKATHON)
-  sponsors: [Sponsor!]! @join__field(graph: HACKATHON)
+  pending(userId: ID!): Boolean! @join__field(graph: HACKATHON)
+  sponsors(after: ID, first: Int! = 25): SponsorsConnection! @join__field(graph: HACKATHON)
+  startDate: Time! @join__field(graph: HACKATHON)
   status: HackathonStatus! @join__field(graph: HACKATHON)
   term: Term! @join__field(graph: HACKATHON)
 }
 
 input HackathonCreateInput {
-  events: [ID!]
+  endDate: Time!
+  events: [ID!]!
   semester: Semester!
-  sponsors: [ID!]
+  sponsors: [ID!]!
+  startDate: Time!
   year: Int!
 }
 
@@ -64,36 +82,45 @@ enum HackathonStatus {
 
 input HackathonUpdateInput {
   addedEvents: [ID!]
+  addedParticipants: [ID!]
   addedSponsors: [ID!]
-  deletedEvents: [ID!]
-  deletedSponsors: [ID!]
+  removedEvents: [ID!]
+  removedParticipants: [ID!]
+  removedSponsors: [ID!]
   semester: Semester
   year: Int
 }
 
 type LoginPayload {
+  accessToken: String
+
   """
   If false then you must register immediately following this. Else, you are logged in and have access to your own user.
   """
   accountExists: Boolean!
   encryptedOAuthAccessToken: String
-  jwt: String
+  refreshToken: String
   user: User
 }
 
 type Mutation {
+  acceptApplicant(hackathonId: ID!, userId: ID!): Boolean! @join__field(graph: HACKATHON)
+  applyToHackathon(hackathonId: ID!): Boolean! @join__field(graph: HACKATHON)
   createEvent(input: NewEvent!): Event! @join__field(graph: EVENTS)
   createHackathon(input: HackathonCreateInput!): Hackathon! @join__field(graph: HACKATHON)
   createSponsor(input: NewSponsor!): Sponsor! @join__field(graph: SPONSORS)
-  deleteEvent(id: ID!): Event! @join__field(graph: EVENTS)
+  deleteEvent(id: ID!): Boolean! @join__field(graph: EVENTS)
+  deleteHackathon(id: ID!): Boolean! @join__field(graph: HACKATHON)
+  deleteSponsor(id: ID!): Boolean! @join__field(graph: SPONSORS)
   deleteUser(id: ID!): Boolean! @join__field(graph: USERS)
+  denyApplicant(hackathonId: ID!, userId: ID!): Boolean! @join__field(graph: HACKATHON)
 
   """To receive an encryptedOAuthAccessToken first call the Login query"""
-  register(encryptedOAuthAccessToken: String!, input: NewUser!, provider: Provider!): User! @join__field(graph: USERS)
+  register(encryptedOAuthAccessToken: String!, input: NewUser!, provider: Provider!): RegistrationPayload! @join__field(graph: USERS)
   updateEvent(id: ID!, input: UpdatedEvent!): Event! @join__field(graph: EVENTS)
-  updateHackathon(input: HackathonUpdateInput!): Hackathon! @join__field(graph: HACKATHON)
+  updateHackathon(id: ID!, input: HackathonUpdateInput!): Hackathon! @join__field(graph: HACKATHON)
   updateSponsor(id: ID!, input: UpdatedSponsor!): Sponsor! @join__field(graph: SPONSORS)
-  updateUser(id: ID!, input: NewUser!): User! @join__field(graph: USERS)
+  updateUser(id: ID!, input: UpdatedUser!): User! @join__field(graph: USERS)
 }
 
 input NewEvent {
@@ -127,6 +154,11 @@ type OAuth {
   uid: String!
 }
 
+type PageInfo {
+  endCursor: String!
+  startCursor: String!
+}
+
 """
 Example:
 subjective=he
@@ -149,7 +181,7 @@ enum Provider {
 
 type Query {
   currentHackathon: Hackathon @join__field(graph: HACKATHON)
-  events: [Event!]! @join__field(graph: EVENTS)
+  events(after: ID, first: Int!): EventsConnection! @join__field(graph: EVENTS)
 
   """
   The code supplied must be the code given to the frontend by the oauth flow
@@ -159,11 +191,27 @@ type Query {
   getHackathon(id: ID!): Hackathon! @join__field(graph: HACKATHON)
   getUser(id: ID!): User @join__field(graph: USERS)
   hackathons(filter: HackathonFilter!): [Hackathon!]! @join__field(graph: HACKATHON)
-  login(code: String!, provider: Provider!): LoginPayload! @join__field(graph: USERS)
+  login(code: String!, provider: Provider!, state: String!): LoginPayload! @join__field(graph: USERS)
   me: User @join__field(graph: USERS)
+  refreshJWT(refreshToken: String!): String! @join__field(graph: USERS)
   searchUser(name: String!): [User!]! @join__field(graph: USERS)
   sponsors(filter: SponsorFilter): [Sponsor!]! @join__field(graph: SPONSORS)
-  users: [User!]! @join__field(graph: USERS)
+  users(after: String, first: Int!): UsersConnection! @join__field(graph: USERS)
+}
+
+type RegistrationPayload {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+
+enum Role {
+  ADMIN
+  NORMAL
+  OWNS
+
+  """for now keep this the same"""
+  SPONSOR
 }
 
 enum Semester {
@@ -189,6 +237,12 @@ type Sponsor
 
 input SponsorFilter {
   tiers: [SubscriptionTier!]
+}
+
+type SponsorsConnection implements Connection {
+  pageInfo: PageInfo!
+  sponsors: [Sponsor!]!
+  totalCount: Int!
 }
 
 enum SubscriptionTier {
@@ -222,22 +276,39 @@ input UpdatedSponsor {
   website: String
 }
 
+input UpdatedUser {
+  age: Int
+  email: String
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  pronouns: PronounsInput
+}
+
 type User
   @join__owner(graph: USERS)
   @join__type(graph: USERS, key: "id")
-  @join__type(graph: USERS, key: "oAuth{uid}")
+  @join__type(graph: USERS, key: "oAuth{uid provider}")
   @join__type(graph: HACKATHON, key: "id")
 {
   age: Int @join__field(graph: USERS)
+  appliedHackathons: [Hackathon!]! @join__field(graph: HACKATHON)
+  attendedHackathons: [Hackathon!]! @join__field(graph: HACKATHON)
   email: String! @join__field(graph: USERS)
   firstName: String! @join__field(graph: USERS)
   fullName: String! @join__field(graph: USERS)
-  hackathons: [Hackathon!]! @join__field(graph: HACKATHON)
   id: ID! @join__field(graph: USERS)
   lastName: String! @join__field(graph: USERS)
   oAuth: OAuth! @join__field(graph: USERS)
   phoneNumber: String! @join__field(graph: USERS)
   pronouns: Pronouns @join__field(graph: USERS)
+  role: Role! @join__field(graph: USERS)
+}
+
+type UsersConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Int!
+  users: [User!]!
 }
 
 enum core__Purpose {
