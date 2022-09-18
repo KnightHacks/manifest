@@ -5,8 +5,8 @@ data:
 kind: Secret
 metadata:
     creationTimestamp: "2022-09-18T19:56:23Z"
-    name: dev-ssl
-    namespace: knighthacks-microservices
+    name: router-ssl
+    namespace: knighthacks-router
     resourceVersion: "19914149"
     uid: 775898f9-8933-4cc0-bb27-fd6964ea10e8
 type: kubernetes.io/tls

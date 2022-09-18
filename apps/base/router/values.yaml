@@ -100,7 +100,7 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: dev-ssl
+    - secretName: router-ssl
       hosts:
         - api.dev.knighthacks.org
 
