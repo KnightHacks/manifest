@@ -102,6 +102,7 @@ ingress:
     kubernetes.io/ingress.class: azure/application-gateway
     appgw.ingress.kubernetes.io/health-probe-path: "/"
     appgw.ingress.kubernetes.io/health-probe-status-codes: "200-399, 400, 401"
+    appgw.ingress.kubernetes.io/appgw-ssl-certificate: "origin"
 #    appgw.ingress.kubernetes.io/ssl-redirect: "true"
   hosts:
     - host: api.dev.knighthacks.org
