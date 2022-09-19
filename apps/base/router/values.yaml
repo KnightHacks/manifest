@@ -9,6 +9,7 @@ router:
   configuration:
     supergraph:
       listen: 0.0.0.0:80
+      introspection: true
     cors:
       origins:
         - https://studio.apollographql.com
@@ -20,6 +21,10 @@ router:
     rhai:
       main: "script.rhai"
       scripts: "/etc/apollo"
+    sandbox:
+      enabled: true
+    homepage:
+      enabled: false
   args:
     - --hot-reload
 
