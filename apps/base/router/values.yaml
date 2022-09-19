@@ -95,7 +95,7 @@ ingress:
   className: ""
   annotations:
     kubernetes.io/ingress.class: azure/application-gateway
-    appgw.ingress.kubernetes.io/health-probe-path: "/?query={__typename}"
+    appgw.ingress.kubernetes.io/health-probe-path: "/"
 #    appgw.ingress.kubernetes.io/ssl-redirect: "true"
   hosts:
     - host: api.dev.knighthacks.org
