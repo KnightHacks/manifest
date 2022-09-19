@@ -14,8 +14,9 @@ router:
         - https://studio.apollographql.com
     headers:
       all:
-        - propagate:
-            named: 'authorization'
+        request:
+          - propagate:
+              named: 'authorization'
     rhai:
       main: "script.rhai"
       scripts: "/etc/apollo"
