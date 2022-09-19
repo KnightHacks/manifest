@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: latest-fixes
   url: https://github.com/KnightHacks/router
   ignore: |
     # exclude all
