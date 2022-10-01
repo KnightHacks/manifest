@@ -7,6 +7,8 @@ replicaCount: 1
 # -- See https://www.apollographql.com/docs/router/configuration/overview#configuration-file for yaml structure
 router:
   configuration:
+    include_subgraph_errors:
+      all: true # Propagate errors from all subraphs
     supergraph:
       listen: 0.0.0.0:80
       introspection: true
