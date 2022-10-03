@@ -4,6 +4,7 @@
 fn router_service(service) {
     let map_callback = |response| {
         try {
+            print(`response=${response}`);
             // Extract our set-cookie key from context
             // If there is no set-cookie key in our context,
             // there is no work to do.
@@ -40,6 +41,7 @@ fn subgraph_service(service, subgraph) {
     // subgraph -> client cookie
     let map_callback = |response| {
         try {
+            print(`response=${response}`);
             print(`headers= ${response.headers}`);
             let my_cache_key = response.headers["set-cookie"];
             // Upsert our context with our resolver
@@ -64,6 +66,7 @@ fn process_request(request) {
 
     try {
         // Find our cookies
+        print(`response=${request}`);
         let cookieHeader = request.headers["cookie"];
         print(`cookieHeader=${cookieHeader}`);
         if cookieHeader != () {
