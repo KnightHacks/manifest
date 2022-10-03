@@ -27,6 +27,9 @@ spec:
           image: ghcr.io/knighthacks/knighthacks_events:1.0.0 # {"$imagepolicy": "flux-system:knighthacks-events"}
           ports:
             - containerPort: 80
+          env:
+            - name: PORT
+              value: 80
           envFrom:
             - secretRef:
                 name: database
