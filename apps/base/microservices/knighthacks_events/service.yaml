@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: 'knighthacks-events-api'
   labels:
-    'app.kubernetes.io/name': 'knighthacks-events'
-    'app.kubernetes.io/part-of': 'knighthacks-microservices'
+    app.kubernetes.io/name: knighthacks-events
+    app.kubernetes.io/part-of: knighthacks-microservices
 spec:
   type: ClusterIP
   ports:
@@ -13,5 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    'app.kubernetes.io/name': 'knighthacks-events'
-    'app.kubernetes.io/part-of': 'knighthacks-microservices'
+    app.kubernetes.io/name: knighthacks-events
+    app.kubernetes.io/part-of: knighthacks-microservices

@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 'knighthacks-events'
-  namespace: 'knighthacks-microservices'
+  name: knighthacks-events
+  namespace: knighthacks-microservices
   labels:
-    'app.kubernetes.io/name': 'knighthacks-events'
-    'app.kubernetes.io/part-of': 'knighthacks-microservices'
-    'app.kubernetes.io/version': ""#  {"$imagepolicy": "flux-system:knighthacks-events:tag"}
-    'app': 'knighthacks_events'
+    app.kubernetes.io/name: knighthacks-events
+    app.kubernetes.io/part-of: knighthacks-microservices
+    app.kubernetes.io/version: ""#  {"$imagepolicy": "flux-system:knighthacks-events:tag"}
+    app: knighthacks_events
 spec:
   replicas: 1
   selector:
     matchLabels:
-      'app.kubernetes.io/name': 'knighthacks-events'
-      'app.kubernetes.io/part-of': 'knighthacks-microservices'
-      app: 'knighthacks_events'
+      app.kubernetes.io/name: knighthacks-events
+      app.kubernetes.io/part-of: knighthacks-microservices
+      app: knighthacks_events
   template:
     metadata:
       labels:
-        'app.kubernetes.io/name': 'knighthacks-events'
-        'app.kubernetes.io/part-of': 'knighthacks-microservices'
-        app: 'knighthacks_events'
+        app.kubernetes.io/name: knighthacks-events
+        app.kubernetes.io/part-of: knighthacks-microservices
+        app: knighthacks_events
     spec:
       containers:
-        - name: 'knighthacks-events'
+        - name: knighthacks-events
           image: ghcr.io/knighthacks/knighthacks_events:1.0.0 # {"$imagepolicy": "flux-system:knighthacks-events"}
           ports:
             - containerPort: 80
