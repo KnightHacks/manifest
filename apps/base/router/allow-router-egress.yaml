@@ -8,8 +8,14 @@ spec:
       'app.kubernetes.io/name': router
   policyTypes:
     - Egress
+    - Ingress
   egress:
     - to:
+        - namespaceSelector:
+            matchLabels:
+              'kubernetes.io/metadata.name': knighthacks-microservices
+  ingress:
+    - from:
         - namespaceSelector:
             matchLabels:
               'kubernetes.io/metadata.name': knighthacks-microservices
