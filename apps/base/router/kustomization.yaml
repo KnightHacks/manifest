@@ -4,7 +4,7 @@ namespace: knighthacks-router
 resources:
   - ./router-ssl.yaml
   - ./release.yaml
-  - ./networkpolicy.yaml
+  - ./allow-router-egress.yaml
 configMapGenerator:
   - name: apollorouter-config
     files:
