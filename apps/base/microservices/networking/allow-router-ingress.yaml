@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      'kubernetes.io/metadata.name': knighthacks-microservices
+      'app.kubernetes.io/part-of': knighthacks-microservices
   policyTypes:
     - Ingress
     - Egress
