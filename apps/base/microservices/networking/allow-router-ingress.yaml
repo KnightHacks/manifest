@@ -10,9 +10,6 @@ spec:
     - Ingress
     - Egress
   ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              'kubernetes.io/metadata.name': knighthacks-router
+    - {}
   egress:
     - {}

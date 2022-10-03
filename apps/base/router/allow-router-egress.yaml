@@ -10,9 +10,6 @@ spec:
     - Egress
     - Ingress
   egress:
-    - to:
-        - namespaceSelector:
-            matchLabels:
-              'kubernetes.io/metadata.name': knighthacks-microservices
+    - {}
   ingress:
     - {}
