@@ -15,7 +15,4 @@ spec:
             matchLabels:
               'kubernetes.io/metadata.name': knighthacks-microservices
   ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              'kubernetes.io/metadata.name': knighthacks-microservices
+    - {}

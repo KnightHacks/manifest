@@ -15,7 +15,4 @@ spec:
             matchLabels:
               'kubernetes.io/metadata.name': knighthacks-router
   egress:
-    - to:
-        - namespaceSelector:
-            matchLabels:
-              'kubernetes.io/metadata.name': knighthacks-router
+    - {}
