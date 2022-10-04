@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: knighthacks-users
     app.kubernetes.io/part-of: knighthacks-microservices
-    app.kubernetes.io/version: "main-8a670543-1664844630" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
+    app.kubernetes.io/version: "main-30c21930-1664848413" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
     app: knighthacks_users
 spec:
   replicas: 1
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: knighthacks-users
-          image: ghcr.io/knighthacks/knighthacks_users:main-8a670543-1664844630 # {"$imagepolicy": "flux-system:knighthacks-users"}
+          image: ghcr.io/knighthacks/knighthacks_users:main-30c21930-1664848413 # {"$imagepolicy": "flux-system:knighthacks-users"}
           ports:
             - containerPort: 80
               name: http
