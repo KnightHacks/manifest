@@ -66,9 +66,11 @@ fn process_request(request) {
 
     try {
         // Find our cookies
-        if "cookie" in request.headers {
-            let cookies = request.headers["cookie"].split(';');
-            print(`cookies=${cookies}`);
+        print(`response=${request}`);
+        let cookieHeader = request.headers["cookie"];
+        print(`cookieHeader=${cookieHeader}`);
+        if cookieHeader != () {
+            let cookies = cookieHeader.split(';');
             for cookie in cookies {
                 // Split our cookies into name and value
                 let k_v = cookie.split('=', 2);
@@ -79,7 +81,7 @@ fn process_request(request) {
                     // update our headers
                     // Note: we must update request.sub_headers, since we are
                     // setting a header in our sub graph request
-                    request.subgraph.headers[k_v[0]] = k_v[1];
+                    request.sub_headers[k_v[0]] = k_v[1];
                     print(`header key = ${k_v[0]}, value = ${k_v[1]}`);
                 }
             }
