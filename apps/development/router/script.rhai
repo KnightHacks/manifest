@@ -67,7 +67,8 @@ fn process_request(request) {
     try {
         // Find our cookies
         print(`response=${request}`);
-        let cookieHeader = request.headers["cookie"];
+        // Set set-cookie
+        let cookieHeader = request.headers["set-cookie"];
         print(`cookieHeader=${cookieHeader}`);
         if cookieHeader != () {
             let cookies = cookieHeader.split(';');
