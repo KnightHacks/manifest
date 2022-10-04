@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/knighthacks/knighthacks_users
     newName: ghcr.io/knighthacks/knighthacks_users # {"$imagepolicy": "flux-system:knighthacks-users:name"}
-    newTag: 0.0.3 # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
+    newTag: main-8a670543-1664844630 # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
