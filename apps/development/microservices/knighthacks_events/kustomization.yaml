@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/knighthacks/knighthacks_events
     newName: ghcr.io/knighthacks/knighthacks_events # {"$imagepolicy": "flux-system:knighthacks-events:name"}
-    newTag: 1.0.0 # {"$imagepolicy": "flux-system:knighthacks-events:tag"}
+    newTag: main-eabeb9e3-1660266760 # {"$imagepolicy": "flux-system:knighthacks-events:tag"}
