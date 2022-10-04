@@ -2,7 +2,7 @@
 // responses. We are using a closure here, but it could be a
 // function if we chose (see execution_service).
 fn supergraph_service(service) {
-    print(`running supergraph_service = ${service}`)
+    print(`running supergraph_service = ${service}`);
     let map_callback = |response| {
         try {
             print(`response=${response}`);
