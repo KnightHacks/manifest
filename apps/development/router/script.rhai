@@ -81,7 +81,7 @@ fn process_request(request) {
                     // update our headers
                     // Note: we must update request.sub_headers, since we are
                     // setting a header in our sub graph request
-                    request.sub_headers[k_v[0]] = k_v[1];
+                    request.subgraph.headers[k_v[0]] = k_v[1];
                     print(`header key = ${k_v[0]}, value = ${k_v[1]}`);
                 }
             }
