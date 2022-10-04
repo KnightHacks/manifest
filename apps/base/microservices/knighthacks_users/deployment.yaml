@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: knighthacks-users
     app.kubernetes.io/part-of: knighthacks-microservices
-    app.kubernetes.io/version: ""#  {"$imagepolicy": "flux-system:knighthacks-users:tag"}
+    app.kubernetes.io/version: "" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
     app: knighthacks_users
 spec:
   replicas: 1
