@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: knighthacks-users
-          image: knighthacks-users # {"$imagepolicy": "flux-system:knighthacks-users"}
+          image: ghcr.io/knighthacks/knighthacks_users:0.0.3 # {"$imagepolicy": "flux-system:knighthacks-users"}
           ports:
             - containerPort: 80
               name: http
