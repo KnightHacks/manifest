@@ -1,9 +1,11 @@
 // At the router_service stage, register callbacks for processing
 // responses. We are using a closure here, but it could be a
 // function if we chose (see execution_service).
-fn router_service(service) {
+fn supergraph_service(service) {
+    print(`running supergraph_service = ${service}`);
     let map_callback = |response| {
         try {
+            print(`response=${response}`);
             // Extract our set-cookie key from context
             // If there is no set-cookie key in our context,
             // there is no work to do.
@@ -40,6 +42,7 @@ fn subgraph_service(service, subgraph) {
     // subgraph -> client cookie
     let map_callback = |response| {
         try {
+            print(`response=${response}`);
             print(`headers= ${response.headers}`);
             let my_cache_key = response.headers["set-cookie"];
             // Upsert our context with our resolver
@@ -64,6 +67,7 @@ fn process_request(request) {
 
     try {
         // Find our cookies
+        print(`response=${request}`);
         let cookieHeader = request.headers["cookie"];
         print(`cookieHeader=${cookieHeader}`);
         if cookieHeader != () {
@@ -78,7 +82,7 @@ fn process_request(request) {
                     // update our headers
                     // Note: we must update request.sub_headers, since we are
                     // setting a header in our sub graph request
-                    request.sub_headers[k_v[0]] = k_v[1];
+                    request.subgraph.headers[k_v[0]] = k_v[1];
                     print(`header key = ${k_v[0]}, value = ${k_v[1]}`);
                 }
             }

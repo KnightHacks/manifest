@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-router-egress
+spec:
+  podSelector:
+    matchLabels:
+      'app.kubernetes.io/name': router
+  policyTypes:
+    - Egress
+    - Ingress
+  egress:
+    - {}
+  ingress:
+    - {}

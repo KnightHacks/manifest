@@ -326,8 +326,8 @@ enum core__Purpose {
 scalar join__FieldSet
 
 enum join__Graph {
-  EVENTS @join__graph(name: "events" url: "http://knighthacks-events-api.knighthacks-microservices.svc.cluster.local/query")
-  HACKATHON @join__graph(name: "hackathon" url: "http://knighthacks-hackathon-api.knighthacks-microservices.svc.cluster.local/query")
-  SPONSORS @join__graph(name: "sponsors" url: "http://knighthacks-sponsors-api.knighthacks-microservices.svc.cluster.local/query")
-  USERS @join__graph(name: "users" url: "http://knighthacks-users-api.knighthacks-microservices.svc.cluster.local/query")
+  EVENTS @join__graph(name: "events" url: "http://knighthacks-events-api.knighthacks-microservices.svc.cluster.local:80/query")
+  HACKATHON @join__graph(name: "hackathon" url: "http://knighthacks-hackathon-api.knighthacks-microservices.svc.cluster.local:80/query")
+  SPONSORS @join__graph(name: "sponsors" url: "http://knighthacks-sponsors-api.knighthacks-microservices.svc.cluster.local:80/query")
+  USERS @join__graph(name: "users" url: "http://knighthacks-users-api.knighthacks-microservices.svc.cluster.local:80/query")
 }

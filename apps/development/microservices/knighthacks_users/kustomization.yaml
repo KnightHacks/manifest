@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: knighthacks-microservices
+#namespace: knighthacks-microservices
 resources:
   - ../../../base/microservices/knighthacks_users
 images:
   - name: ghcr.io/knighthacks/knighthacks_users
     newName: ghcr.io/knighthacks/knighthacks_users # {"$imagepolicy": "flux-system:knighthacks-users:name"}
-    newTag: 0.0.3 # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
+    newTag: main-1baa6512-1665098966 # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
