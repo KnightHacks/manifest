@@ -1,7 +1,7 @@
 
 schema
-  @core(feature: "https://specs.apollo.dev/core/v0.2"),
-  @core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
+@core(feature: "https://specs.apollo.dev/core/v0.2"),
+@core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
 {
   query: Query
   mutation: Mutation
@@ -23,9 +23,9 @@ interface Connection {
 }
 
 type Event
-  @join__owner(graph: EVENTS)
-  @join__type(graph: EVENTS, key: "id")
-  @join__type(graph: HACKATHON, key: "id")
+@join__owner(graph: EVENTS)
+@join__type(graph: EVENTS, key: "id")
+@join__type(graph: HACKATHON, key: "id")
 {
   description: String! @join__field(graph: EVENTS)
   end_date: Time! @join__field(graph: EVENTS)
@@ -43,9 +43,9 @@ type EventsConnection implements Connection {
 }
 
 type Hackathon
-  @join__owner(graph: HACKATHON)
-  @join__type(graph: HACKATHON, key: "id")
-  @join__type(graph: HACKATHON, key: "term{year semester}")
+@join__owner(graph: HACKATHON)
+@join__type(graph: HACKATHON, key: "id")
+@join__type(graph: HACKATHON, key: "term{year semester}")
 {
   applicants(after: ID, first: Int! = 25): UsersConnection! @join__field(graph: HACKATHON)
   attendees(after: ID, first: Int! = 25): UsersConnection! @join__field(graph: HACKATHON)
@@ -187,7 +187,7 @@ type Query {
   The code supplied must be the code given to the frontend by the oauth flow
   Step 1 response https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
   """
-  getAuthRedirectLink(provider: Provider!): String! @join__field(graph: USERS)
+  getAuthRedirectLink(provider: Provider!, redirect: String): String! @join__field(graph: USERS)
   getHackathon(id: ID!): Hackathon! @join__field(graph: HACKATHON)
   getUser(id: ID!): User @join__field(graph: USERS)
   hackathons(filter: HackathonFilter!): [Hackathon!]! @join__field(graph: HACKATHON)
@@ -195,7 +195,7 @@ type Query {
   me: User @join__field(graph: USERS)
   refreshJWT(refreshToken: String!): String! @join__field(graph: USERS)
   searchUser(name: String!): [User!]! @join__field(graph: USERS)
-  sponsors(filter: SponsorFilter): [Sponsor!]! @join__field(graph: SPONSORS)
+  sponsors(after: String, filter: SponsorFilter, first: Int!): SponsorsConnection! @join__field(graph: SPONSORS)
   users(after: String, first: Int!): UsersConnection! @join__field(graph: USERS)
 }
 
@@ -221,9 +221,9 @@ enum Semester {
 }
 
 type Sponsor
-  @join__owner(graph: SPONSORS)
-  @join__type(graph: SPONSORS, key: "id")
-  @join__type(graph: HACKATHON, key: "id")
+@join__owner(graph: SPONSORS)
+@join__type(graph: SPONSORS, key: "id")
+@join__type(graph: HACKATHON, key: "id")
 {
   description: String @join__field(graph: SPONSORS)
   hackathons: [Hackathon!]! @join__field(graph: HACKATHON)
@@ -286,10 +286,10 @@ input UpdatedUser {
 }
 
 type User
-  @join__owner(graph: USERS)
-  @join__type(graph: USERS, key: "id")
-  @join__type(graph: USERS, key: "oAuth{uid provider}")
-  @join__type(graph: HACKATHON, key: "id")
+@join__owner(graph: USERS)
+@join__type(graph: USERS, key: "id")
+@join__type(graph: USERS, key: "oAuth{uid provider}")
+@join__type(graph: HACKATHON, key: "id")
 {
   age: Int @join__field(graph: USERS)
   appliedHackathons: [Hackathon!]! @join__field(graph: HACKATHON)
