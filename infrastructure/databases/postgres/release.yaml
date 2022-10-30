@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
-      version: '>11.0.0'
+      version: '11.9.13' # don't want to run postgres 15.0 quite yet
   interval: 10m0s
   valuesFrom:
     - kind: ConfigMap
