@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: knighthacks-sponsors
     app.kubernetes.io/part-of: knighthacks-microservices
-    app.kubernetes.io/version: "main-729d32ff-1668995364" #  {"$imagepolicy": "flux-system:knighthacks-sponsors:tag"}
+    app.kubernetes.io/version: "main-5727f428-1671322333" #  {"$imagepolicy": "flux-system:knighthacks-sponsors:tag"}
     app: knighthacks_sponsors
 spec:
   replicas: 1
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: knighthacks-sponsors
-          image: ghcr.io/knighthacks/knighthacks_sponsors:main-729d32ff-1668995364 # {"$imagepolicy": "flux-system:knighthacks-sponsors"}
+          image: ghcr.io/knighthacks/knighthacks_sponsors:main-5727f428-1671322333 # {"$imagepolicy": "flux-system:knighthacks-sponsors"}
           ports:
             - containerPort: 80
               name: http

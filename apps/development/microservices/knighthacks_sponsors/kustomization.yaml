@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/knighthacks/knighthacks_sponsors
     newName: ghcr.io/knighthacks/knighthacks_sponsors # {"$imagepolicy": "flux-system:knighthacks-sponsors:name"}
-    newTag: main-729d32ff-1668995364 # {"$imagepolicy": "flux-system:knighthacks-sponsors:tag"}
+    newTag: main-5727f428-1671322333 # {"$imagepolicy": "flux-system:knighthacks-sponsors:tag"}
