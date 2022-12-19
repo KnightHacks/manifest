@@ -5,9 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  ref:
-    branch: latest-fixes
-  url: https://github.com/KnightHacks/router
+  url: https://github.com/apollographql/router
   ignore: |
     # exclude all
     /*
