@@ -89,15 +89,19 @@ type Hackathon
   term: Term! @join__field(graph: HACKATHON)
 }
 
-type HackathonApplication {
-  hackathon: Hackathon!
-  id: ID!
-  resumeUrl: String
-  shareInfoWithSponsors: Boolean!
-  status: ApplicationStatus!
-  user: User!
-  whatDoYouWantToLearn: [String!]!
-  whyAttend: [String!]!
+type HackathonApplication
+@join__owner(graph: HACKATHON)
+@join__type(graph: HACKATHON, key: "id")
+@join__type(graph: USERS, key: "id")
+{
+  hackathon: Hackathon! @join__field(graph: HACKATHON)
+  id: ID! @join__field(graph: HACKATHON)
+  resumeBase64: String @join__field(graph: HACKATHON)
+  shareInfoWithSponsors: Boolean! @join__field(graph: HACKATHON)
+  status: ApplicationStatus! @join__field(graph: HACKATHON)
+  user: User! @join__field(graph: USERS)
+  whatDoYouWantToLearn: [String!]! @join__field(graph: HACKATHON)
+  whyAttend: [String!]! @join__field(graph: HACKATHON)
 }
 
 type HackathonApplicationConnection implements Connection {
@@ -233,6 +237,7 @@ type Mutation {
 input NewEvent {
   description: String!
   end_date: Time!
+  hackathonId: ID!
   location: String!
   name: String!
   start_date: Time!
@@ -249,17 +254,17 @@ input NewSponsor {
 
 input NewUser {
   age: Int
-  educationInfo: EducationInfoInput!
+  educationInfo: EducationInfoInput
   email: String!
   firstName: String!
   gender: String
   lastName: String!
   mailingAddress: MailingAddressInput
-  mlh: MLHTermsInput!
+  mlh: MLHTermsInput
   phoneNumber: String!
   pronouns: PronounsInput
   race: [Race!]
-  shirtSize: ShirtSize!
+  shirtSize: ShirtSize
   yearsOfExperience: Float
 }
 
@@ -437,7 +442,7 @@ type User
   age: Int @join__field(graph: USERS)
   apiKey: APIKey! @join__field(graph: USERS)
   applications: [HackathonApplication!]! @join__field(graph: HACKATHON)
-  educationInfo: EducationInfo! @join__field(graph: USERS)
+  educationInfo: EducationInfo @join__field(graph: USERS)
   email: String! @join__field(graph: USERS)
   firstName: String! @join__field(graph: USERS)
   fullName: String! @join__field(graph: USERS)
@@ -445,13 +450,13 @@ type User
   id: ID! @join__field(graph: USERS)
   lastName: String! @join__field(graph: USERS)
   mailingAddress: MailingAddress @join__field(graph: USERS)
-  mlh: MLHTerms! @join__field(graph: USERS)
+  mlh: MLHTerms @join__field(graph: USERS)
   oAuth: OAuth! @join__field(graph: USERS)
   phoneNumber: String! @join__field(graph: USERS)
   pronouns: Pronouns @join__field(graph: USERS)
   race: [Race!] @join__field(graph: USERS)
   role: Role! @join__field(graph: USERS)
-  shirtSize: ShirtSize! @join__field(graph: USERS)
+  shirtSize: ShirtSize @join__field(graph: USERS)
   yearsOfExperience: Float @join__field(graph: USERS)
 }
 
