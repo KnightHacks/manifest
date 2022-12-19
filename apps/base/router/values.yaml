@@ -16,6 +16,10 @@ router:
       allow_credentials: true
       origins:
         - https://studio.apollographql.com
+        - https://api-dev.knighthacks.org
+        - https://admin.knighthacks.org
+        - https://knighthacks.org
+        - http://localhost:3000
     headers:
       all:
         request:
