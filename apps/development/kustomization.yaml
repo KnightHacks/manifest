@@ -8,4 +8,5 @@ resources:
   - ./microservices/knighthacks_sponsors
   - ./microservices/knighthacks_hackathon
   - ./microservices/secrets/
+  - ./frontend/hackathon
   - ../base/microservices/networking
