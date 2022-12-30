@@ -20,3 +20,13 @@ spec:
                 name: knighthacks-hackathon-frontend
                 port:
                   number: 80
+    - host: 2023.knighthacks.org
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: knighthacks-hackathon-frontend
+                port:
+                  number: 80
