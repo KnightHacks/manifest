@@ -4,3 +4,4 @@ namespace: knighthacks-frontend
 resources:
   - deployment.yaml
   - service.yaml
+  - ingress.yaml
