@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: hackathon
     app.kubernetes.io/part-of: knighthacks-frontend
-    app.kubernetes.io/version: "1.0.0" #  {"$imagepolicy": "flux-system:hackathon-frontend:tag"}
+    app.kubernetes.io/version: "main-a81e9e5f-1672425959" #  {"$imagepolicy": "flux-system:hackathon-frontend:tag"}
     app: knighthacks_frontend
 spec:
   replicas: 1
@@ -24,9 +24,8 @@ spec:
     spec:
       containers:
         - name: hackathon
-          image: ghcr.io/knighthacks/hackathon-2022:1.0.0 # {"$imagepolicy": "flux-system:hackathon-frontend"}
+          image: ghcr.io/knighthacks/hackathon-2022:main-a81e9e5f-1672425959 # {"$imagepolicy": "flux-system:hackathon-frontend"}
           ports:
             - containerPort: 8080
               name: http
               protocol: TCP
-
