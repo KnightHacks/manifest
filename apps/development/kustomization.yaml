@@ -9,4 +9,5 @@ resources:
   - ./microservices/knighthacks_hackathon
   - ./microservices/secrets/
   - ./frontend/hackathon
+  - ./frontend/admin
   - ../base/microservices/networking
