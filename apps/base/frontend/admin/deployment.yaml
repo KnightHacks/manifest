@@ -33,4 +33,4 @@ spec:
             - name: REACT_APP_API_ENDPOINT
               value: 'https://api-dev.knighthacks.org/'
             - name: REACT_APP_OAUTH_AUTH_REDIRECT
-              value: 'https://2023.knighthacks.org/auth_redirect'
+              value: 'https://dev-admin.knighthacks.org/auth_redirect'
