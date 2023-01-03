@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: knighthacks-microservices
 resources:
   - ./allow-router-ingress.yaml
-  - ./allow-frontend-ingress.yaml

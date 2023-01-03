@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-router-ingress
+  name: allow-admin-ingress
 spec:
   podSelector:
     matchLabels:
-      'app.kubernetes.io/part-of': knighthacks-frontend
+      'app.kubernetes.io/name': admin
   policyTypes:
     - Ingress
     - Egress
