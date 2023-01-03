@@ -29,7 +29,7 @@ spec:
             - containerPort: 8080
               name: http
               protocol: TCP
-          env:
+          env: # TODO: MOVE THIS INTO A VARIABLE
             - name: REACT_APP_API_ENDPOINT
               value: 'https://api-dev.knighthacks.org/'
             - name: REACT_APP_OAUTH_AUTH_REDIRECT
