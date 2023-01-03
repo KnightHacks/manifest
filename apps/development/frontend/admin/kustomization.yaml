@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/knighthacks/admin-tool-frontend-2022
     newName: ghcr.io/knighthacks/admin-tool-frontend-2022 # {"$imagepolicy": "flux-system:admin-frontend:name"}
-    newTag: main-4ca2cd72-1672706682 # {"$imagepolicy": "flux-system:admin-frontend:tag"}
+    newTag: main-310098cc-1672714491 # {"$imagepolicy": "flux-system:admin-frontend:tag"}
