@@ -29,3 +29,8 @@ spec:
             - containerPort: 8080
               name: http
               protocol: TCP
+          env:
+            - name: REACT_APP_API_ENDPOINT
+              value: 'https://api-dev.knighthacks.org/'
+            - name: REACT_APP_OAUTH_AUTH_REDIRECT
+              value: 'https://2023.knighthacks.org/auth_redirect'
