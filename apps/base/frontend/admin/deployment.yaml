@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: admin
     app.kubernetes.io/part-of: knighthacks-frontend
-    app.kubernetes.io/version: "main-4ca2cd72-1672706682" #  {"$imagepolicy": "flux-system:admin-frontend:tag"}
+    app.kubernetes.io/version: "main-310098cc-1672714491" #  {"$imagepolicy": "flux-system:admin-frontend:tag"}
     app: admin-tool-frontend-2022
 spec:
   replicas: 1
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: admin
-          image: ghcr.io/knighthacks/admin-tool-frontend-2022:main-4ca2cd72-1672706682 # {"$imagepolicy": "flux-system:admin-frontend"}
+          image: ghcr.io/knighthacks/admin-tool-frontend-2022:main-310098cc-1672714491 # {"$imagepolicy": "flux-system:admin-frontend"}
           ports:
             - containerPort: 8080
               name: http
