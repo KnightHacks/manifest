@@ -7,20 +7,20 @@ metadata:
     app.kubernetes.io/name: admin
     app.kubernetes.io/part-of: knighthacks-frontend
     app.kubernetes.io/version: "main-a81e9e5f-1672425959" #  {"$imagepolicy": "flux-system:hackathon-frontend:tag"}
-    app: knighthacks_frontend
+    app: admin-tool-frontend-2022
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: admin
       app.kubernetes.io/part-of: knighthacks-frontend
-      app: knighthacks_frontend
+      app: admin-tool-frontend-2022
   template:
     metadata:
       labels:
         app.kubernetes.io/name: admin
         app.kubernetes.io/part-of: knighthacks-frontend
-        app: knighthacks_frontend
+        app: admin-tool-frontend-2022
     spec:
       containers:
         - name: admin
