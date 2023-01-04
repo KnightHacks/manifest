@@ -7,3 +7,12 @@ images:
   - name: ghcr.io/knighthacks/admin-tool-frontend-2022
     newName: ghcr.io/knighthacks/admin-tool-frontend-2022 # {"$imagepolicy": "flux-system:admin-frontend:name"}
     newTag: main-310098cc-1672714491 # {"$imagepolicy": "flux-system:admin-frontend:tag"}
+
+replicas:
+  - name: admin
+    count: 1
+
+configMapGenerator:
+  - name: frontend-admin-config
+    envs:
+      - frontend-admin-config.env

@@ -2,25 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: knighthacks-events
-  namespace: knighthacks-microservices
   labels:
-    app.kubernetes.io/name: knighthacks-events
-    app.kubernetes.io/part-of: knighthacks-microservices
     app.kubernetes.io/version: "main-a1de05f9-1671322319" #  {"$imagepolicy": "flux-system:knighthacks-events:tag"}
-    app: knighthacks_events
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: knighthacks-events
-      app.kubernetes.io/part-of: knighthacks-microservices
-      app: knighthacks_events
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: knighthacks-events
-        app.kubernetes.io/part-of: knighthacks-microservices
-        app: knighthacks_events
     spec:
       containers:
         - name: knighthacks-events

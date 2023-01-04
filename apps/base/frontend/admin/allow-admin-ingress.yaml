@@ -3,9 +3,6 @@ kind: NetworkPolicy
 metadata:
   name: allow-admin-ingress
 spec:
-  podSelector:
-    matchLabels:
-      'app.kubernetes.io/name': admin
   policyTypes:
     - Ingress
     - Egress

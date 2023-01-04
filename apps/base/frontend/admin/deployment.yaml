@@ -2,25 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: admin
-  namespace: knighthacks-frontend
   labels:
-    app.kubernetes.io/name: admin
-    app.kubernetes.io/part-of: knighthacks-frontend
     app.kubernetes.io/version: "main-310098cc-1672714491" #  {"$imagepolicy": "flux-system:admin-frontend:tag"}
-    app: admin-tool-frontend-2022
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: admin
-      app.kubernetes.io/part-of: knighthacks-frontend
-      app: admin-tool-frontend-2022
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: admin
-        app.kubernetes.io/part-of: knighthacks-frontend
-        app: admin-tool-frontend-2022
     spec:
       containers:
         - name: admin
@@ -29,8 +14,6 @@ spec:
             - containerPort: 8080
               name: http
               protocol: TCP
-          env: # TODO: MOVE THIS INTO A VARIABLE
-            - name: REACT_APP_API_ENDPOINT
-              value: 'https://api-dev.knighthacks.org/'
-            - name: REACT_APP_OAUTH_AUTH_REDIRECT
-              value: 'https://dev-admin.knighthacks.org/auth_redirect'
+          envFrom:
+            - configMapRef:
+                name: frontend-admin-config

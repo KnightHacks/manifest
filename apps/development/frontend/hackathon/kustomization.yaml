@@ -7,3 +7,12 @@ images:
   - name: ghcr.io/knighthacks/hackathon-2022
     newName: ghcr.io/knighthacks/hackathon-2022 # {"$imagepolicy": "flux-system:hackathon-frontend:name"}
     newTag: main-a81e9e5f-1672425959 # {"$imagepolicy": "flux-system:hackathon-frontend:tag"}
+
+replicas:
+  - name: hackathon
+    count: 1
+
+configMapGenerator:
+  - name: frontend-hackathon-config
+    envs:
+      - frontend-hackathon-config.env

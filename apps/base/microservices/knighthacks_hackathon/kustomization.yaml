@@ -1,6 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: knighthacks-microservices
+commonLabels:
+  app.kubernetes.io/name: knighthacks-hackathon
+  app.kubernetes.io/part-of: knighthacks-microservices
+  app: knighthacks_hackathon
 resources:
   - ./deployment.yaml
   - ./service.yaml

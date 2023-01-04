@@ -2,25 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: knighthacks-users
-  namespace: knighthacks-microservices
   labels:
-    app.kubernetes.io/name: knighthacks-users
-    app.kubernetes.io/part-of: knighthacks-microservices
     app.kubernetes.io/version: "main-6568483a-1671320710" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
-    app: knighthacks_users
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: knighthacks-users
-      app.kubernetes.io/part-of: knighthacks-microservices
-      app: knighthacks_users
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: knighthacks-users
-        app.kubernetes.io/part-of: knighthacks-microservices
-        app: knighthacks_users
     spec:
       containers:
         - name: knighthacks-users

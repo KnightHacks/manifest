@@ -3,9 +3,6 @@ kind: NetworkPolicy
 metadata:
   name: allow-hackathon-ingress
 spec:
-  podSelector:
-    matchLabels:
-      'app.kubernetes.io/name': hackathon
   policyTypes:
     - Ingress
     - Egress
