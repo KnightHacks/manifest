@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   name: knighthacks-users
   labels:
-    app.kubernetes.io/version: "main-cb1394db-1672790504" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
+    app.kubernetes.io/version: "main-578abb57-1672809578" # {"$imagepolicy": "flux-system:knighthacks-users:tag"}
 spec:
   template:
     spec:
       containers:
         - name: knighthacks-users
-          image: ghcr.io/knighthacks/knighthacks_users:main-cb1394db-1672790504 # {"$imagepolicy": "flux-system:knighthacks-users"}
+          image: ghcr.io/knighthacks/knighthacks_users:main-578abb57-1672809578 # {"$imagepolicy": "flux-system:knighthacks-users"}
           ports:
             - containerPort: 80
               name: http
